@@ -20,8 +20,8 @@ def datos(url):
 def descuentos(soup):
     productos = soup.find_all('div', {'data-component-type': 's-search-result'})
     for item in productos:
-        titulo = item.find('a', {'class': 'a-link-normal a-text-normal'}).text.strip()
-        titulo_abreviado = item.find('a', {'class': 'a-link-normal a-text-normal'}).text.strip()[:20]
+        titulo = item.find('a', {'class': 'a-link-normal a-text-normal'}).text.replace(',',' ').strip()
+        titulo_abreviado = item.find('a', {'class': 'a-link-normal a-text-normal'}).text.replace(',',' ').strip()[:20]
         link = item.find('a', {'class': 'a-link-normal a-text-normal'})['href']
         # REVISAR ESTE PRIMER TRY AND EXCEPT
         spanlist = item.find_all('span', {'class': 'a-offscreen'})
