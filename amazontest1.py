@@ -13,7 +13,7 @@ url = f'https://www.amazon.com/s?k={buscador}&i=computers'
 
 def datos(url):
     y = x.get(url)
-    y.html.render(sleep=2)
+    y.html.render(sleep=1)
     soup = BeautifulSoup(y.html.html, 'html.parser')
     return soup
 
@@ -25,11 +25,10 @@ def descuentos(soup):
         link = item.find('a', {'class': 'a-link-normal a-text-normal'})['href']
         # REVISAR ESTE PRIMER TRY AND EXCEPT
         try:
-            precio_actual = float(item.find_all('span', {'class': 'a-offscreen'})[0].text.replace('$','').replace(',','').strip())
-            precio_sin_descuento = float(item.find_all('span', {'class': 'a-offscreen'})[1].text.replace('$','').replace(',','').strip())
+            precio_actual = float(spanlist[0].text.replace('$','').replace(',','').strip())
+            precio_sin_descuento = float(spanlist[1].text.replace('$','').replace(',','').strip())
         except:
-            #precio_sin_descuento = float(item.find('span', {'class': 'a-offscreen'}).text.replace('$','').replace(',','').strip())
-            precio_sin_descuento = float(item.find('span', {'class': 'a-offscreen'}))
+            precio_sin_descuento = float(spanlist[0].text.replace('$','').replace(',','').strip())
         try:
             criticas = float(item.find('span', {'class': 'a-size-base'}).text.strip())
         except:
