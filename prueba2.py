@@ -4,16 +4,16 @@ import pandas as pd
 import argparse
 
 #Comment out these 3 lines and change the searchterm variable, if you do not wish to use argparse version
-my_parser = argparse.ArgumentParser(description='Return BF Amazon Deals')
-my_parser.add_argument('searchterm', metavar='searchterm', type=str, help='The item to be searched for. Use + for spaces')
-args = my_parser.parse_args()
+#my_parser = argparse.ArgumentParser(description='Return BF Amazon Deals')
+#my_parser.add_argument('searchterm', metavar='searchterm', type=str, help='The item to be searched for. Use + for spaces')
+#args = my_parser.parse_args()
 
-searchterm = args.searchterm
+#searchterm = args.searchterm
 
 s = HTMLSession()
 dealslist = []
 
-
+searchterm = 'laptop'
 url = f'https://www.amazon.co.uk/s?k={searchterm}&i=black-friday'
 
 def getdata(url):
