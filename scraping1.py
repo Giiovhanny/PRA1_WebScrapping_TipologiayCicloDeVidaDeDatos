@@ -4,7 +4,8 @@ import pandas as pd
 url = 'https://www.youtube.com/c/HealthyPockets/videos'
 webPage='https://www.youtube.com/c/KikeJav/videos'
 
-PATH=r"C:\Users\gio-v\Documents\UOC\Tipologiayciclodevidadelosdatos\chromedriver.exe"
+# PATH=r"C:\Users\gio-v\Documents\UOC\Tipologiayciclodevidadelosdatos\chromedriver.exe"
+PATH=r"C:\Users\ASUS X555B\Documents\UOC\Tipología de Datos\chromedriver.exe"
 
 driver = webdriver.Chrome(PATH)
 driver.get(url)
