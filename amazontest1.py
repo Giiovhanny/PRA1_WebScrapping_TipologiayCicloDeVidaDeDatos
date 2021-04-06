@@ -24,11 +24,16 @@ def descuentos(soup):
         titulo_abreviado = item.find('a', {'class': 'a-link-normal a-text-normal'}).text.strip()[:20]
         link = item.find('a', {'class': 'a-link-normal a-text-normal'})['href']
         # REVISAR ESTE PRIMER TRY AND EXCEPT
-        try:
-            precio_actual = float(spanlist[0].text.replace('$','').replace(',','').strip())
-            precio_sin_descuento = float(spanlist[1].text.replace('$','').replace(',','').strip())
-        except:
-            precio_sin_descuento = float(spanlist[0].text.replace('$','').replace(',','').strip())
+        spanlist = item.find_all('span', {'class': 'a-offscreen'})
+        precio_actual, precio_sin_descuento = 0, 0
+        if not spanlist:
+            print(titulo, "Sin Precio")
+        else:
+            try:
+                precio_actual = float(spanlist[0].text.replace('$','').replace(',','').strip())
+                precio_sin_descuento = float(spanlist[1].text.replace('$','').replace(',','').strip())
+            except:
+                precio_sin_descuento = float(spanlist[0].text.replace('$','').replace(',','').strip())
         try:
             criticas = float(item.find('span', {'class': 'a-size-base'}).text.strip())
         except:
