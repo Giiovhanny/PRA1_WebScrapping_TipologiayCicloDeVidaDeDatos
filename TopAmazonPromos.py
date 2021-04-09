@@ -3,6 +3,7 @@ from requests_html import HTMLSession
 from bs4 import BeautifulSoup
 import pandas as pd
 import datetime
+import argparse
 import whois
 import builtwith
 import requests
@@ -42,7 +43,14 @@ x = HTMLSession()
 
 # Ahora se va a empezar a trabajar en función de realizar la extracción de datos del sitio web. Para este proyecto vamos a realizar
 # la busqueda de promociones para una marca de computadores, sin embargo,  si es necesario se puede cambiar el item de busqueda.
-buscar = 'asus+zenbook'
+
+'''analizar= argparse.ArgumentParser(description='Busqueda de productos y promociones en Amazon')
+analizar.add_argument('buscar', metavar='buscar', type=str, help='Por favor escriba el producto que desea buscar. Si el nombre del producto contiene mas de una palabra use + para espaciarlas')
+argumentos = analizar.parse_args()
+buscar = args.buscar'''
+
+
+buscar = 'mackbook+pro'
 url = f'https://www.amazon.com/s?k={buscar}'
 
 # Con la primera función que se va a crear se podrán acceder a la data del sitio web. Luego usamos sleep para evitar
@@ -74,7 +82,7 @@ def descuentos(soup):
         # Abreviación del título para mejorar comprensión
         titulo_abreviado = item.find('a', {'class': 'a-link-normal a-text-normal'}).text.replace(',',' ').strip()[:20]
         # Busqueda del link del producto
-        link = item.find('a', {'class': 'a-link-normal a-text-normal'})['href']
+        link = 'https://www.amazon.com/' + item.find('a', {'class': 'a-link-normal a-text-normal'})['href']
         # Se crea primero una lista llamada lista_spam para verificar si el producto tiene o no descuento
         lista_span = item.find_all('span', {'class': 'a-offscreen'})
         precio_actual, precio_sin_descuento = 0, 0
