@@ -6,7 +6,7 @@ import datetime
 
 
 lista_de_descuentos = []
-x = HTMLSession()
+x = AsyncHTMLSession()
 
 buscador = 'smart+phone'
 url = f'https://www.amazon.com/s?k={buscador}&i=computers'
@@ -14,8 +14,8 @@ url = f'https://www.amazon.com/s?k={buscador}&i=computers'
 
 
 def datos(url):
-    y = x.get(url)
-    y.html.render(sleep=1)
+    y =  await x.get(url)
+    await y.html.render(sleep=1)
     soup = BeautifulSoup(y.html.html, 'html.parser')
     return soup
 
