@@ -24,11 +24,15 @@ def descuentos(soup):
     amazonChoice=False
     for item in productos:
         titulo = item.find('a', {'class': 'a-link-normal a-text-normal'}).text.replace(',',' ').strip()
+        # Ahora buscamos la etiqueta de amazon choice (Amazon's) para marcar los articulos que la tengan. 
         try:
-            amazonChoice = item.find('span', {'class': 'a-badge-text', 'data-a-badge-color':'sx-cloud'})
-            
+            if(item.find('span', {'class': 'a-badge-text', 'data-a-badge-color':'sx-cloud'}).text.replace(',',' ').strip() == "Amazon's"):
+                 amazonChoice=True
+            else:
+                amazonChoice=False
         except:
             amazonChoise= False
+
         titulo_abreviado = item.find('a', {'class': 'a-link-normal a-text-normal'}).text.replace(',',' ').strip()[:20]
         link = item.find('a', {'class': 'a-link-normal a-text-normal'})['href']
         # REVISAR ESTE PRIMER TRY AND EXCEPT
@@ -52,10 +56,7 @@ def descuentos(soup):
         except:
             calificacion = 0
         date = datetime.datetime.now()
-        if(amazonChoice):
-                 amazonChoice=True
-        else:
-            amazonChoice=False
+        
         
         articulo_en_venta= {
             'titulo': titulo,
@@ -80,7 +81,7 @@ def siguiente_pagina(soup):
         return
 
 i=0
-while i<20:
+while i<3:
     soup = datos(url)
     descuentos(soup)
     url = siguiente_pagina(soup)
@@ -89,7 +90,7 @@ while i<20:
         break
     else:
         print(url)
-        print(len(lista_de_descuentos))
+        #print(len(lista_de_descuentos))
 # while True:
 #     soup = datos(url)
 #     descuentos(soup)
