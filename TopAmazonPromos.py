@@ -134,7 +134,7 @@ def siguiente_pagina(soup):
         return url
     else:
         return
-# Si la busqueda del prodcuto tiene cientos de p'aginas, se limita a las primeras 20
+# Si la busqueda del prodcuto tiene cientos de paginas, se limita a las primeras 20.
 i=0
 while i<20:
     soup = datos(url)
