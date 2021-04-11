@@ -3,5 +3,5 @@ Ficheros:
 TopAmazonPromos.py: Aqui se encuentra el codigo en lenguaje python para obtener el dataset.
 TopAmazonPromos.csv: Este es el dataset generado en formato csv. 
 PRA1-WebScrapping.pdf: Aqui se encuentran las repuestas a las preguntas de la practica. 
-README.md: Aqui se encutran las indicaciones para ejecutar el script que extrae los datos. 
+README.md: Aqui se encuentran las indicaciones para ejecutar el script que extrae los datos. 
 Requirements.txt: Aqui se encuentra lsitadas las dependencias necesarias para ejecutar el script.
