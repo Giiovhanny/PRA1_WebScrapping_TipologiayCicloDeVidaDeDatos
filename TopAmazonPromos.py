@@ -44,12 +44,6 @@ x = HTMLSession()
 # Ahora se va a empezar a trabajar en función de realizar la extracción de datos del sitio web. Para este proyecto vamos a realizar
 # la busqueda de promociones para una marca de computadores, sin embargo,  si es necesario se puede cambiar el item de busqueda.
 
-'''analizar= argparse.ArgumentParser(description='Busqueda de productos y promociones en Amazon')
-analizar.add_argument('buscar', metavar='buscar', type=str, help='Por favor escriba el producto que desea buscar. Si el nombre del producto contiene mas de una palabra use + para espaciarlas')
-argumentos = analizar.parse_args()
-buscar = args.buscar'''
-
-
 buscar = 'mackbook+pro'
 url = f'https://www.amazon.com/s?k={buscar}'
 
